@@ -23,7 +23,13 @@ pipeline {
         }
       }
     }
-
+    stage('SonarQube code scan') {
+      steps {
+        script {
+            sonarScanner('category-service')
+        }
+      }
+    } 
     stage('Tests') {
       parallel {
         stage('UT') {
